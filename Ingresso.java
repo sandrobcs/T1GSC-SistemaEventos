@@ -9,4 +9,24 @@ public class Ingresso {
         this.participante = participante;
     }
 
+    public String getCodigoIngresso() {
+        return codigoIngresso;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public Participante getParticipante() {
+        return participante;
+    }
+
+    @Override
+    public String toString() {
+        return "Ingresso {" +
+                "codigo='" + codigoIngresso + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", participante=" + (participante != null ? participante.getNomeCompleto() : "N/A") +
+                '}';
+    }
 }
