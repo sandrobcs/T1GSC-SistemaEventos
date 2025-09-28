@@ -21,4 +21,34 @@ public class Evento {
         this.capacidade = capacidade;
         this.ingressos = new ArrayList<>();
     }
+    
+     public String getCodigoEvento() {
+        return codigoEvento;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public double getValorIngresso() {
+        return valorIngresso;
+    }
+
+    public String getResponsavel() {
+        return responsavel;
+    }
+
+    public int getCapacidade() {
+        return capacidade;
+    }
+
+    public ArrayList<Ingresso> getIngressos() {
+        return ingressos;
+    }
+
+
 }
