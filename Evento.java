@@ -21,7 +21,7 @@ public class Evento {
         this.capacidade = capacidade;
         this.ingressos = new ArrayList<>();
     }
-    
+
      public String getCodigoEvento() {
         return codigoEvento;
     }
@@ -50,5 +50,34 @@ public class Evento {
         return ingressos;
     }
 
+     public void adicionarIngresso(Ingresso ingresso) {
+        if (ingressos.size() < capacidade) {
+            ingressos.add(ingresso);
+        } else {
+            System.out.println("Capacidade máxima do evento atingida!");
+        }
+    }
+
+    public int getIngressosVendidos() {
+        return ingressos.size();
+    }
+
+    public double getPercentualOcupacao() {
+        return (getIngressosVendidos() * 100.0) / capacidade;
+    }
+
+    @Override
+    public String toString() {
+        return "Evento {" +
+                "codigo='" + codigoEvento + '\'' +
+                ", nome='" + nome + '\'' +
+                ", data='" + data + '\'' +
+                ", valor=" + valorIngresso +
+                ", responsavel='" + responsavel + '\'' +
+                ", capacidade=" + capacidade +
+                ", vendidos=" + getIngressosVendidos() + "}";
+    }
+
+    
 
 }
