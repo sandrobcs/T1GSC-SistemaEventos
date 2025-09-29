@@ -9,7 +9,8 @@ public class Evento {
     private double valorIngresso;
     private String responsavel;
     private int capacidade;
-    private ArrayList<Ingresso> ingressos; 
+    private ArrayList<Ingresso> ingressos;
+    private boolean cancelado;
 
     public Evento(String nome, String data, double valor, String responsavel, int capacidade) {
         contadorEventos++;
@@ -20,6 +21,7 @@ public class Evento {
         this.responsavel = responsavel;
         this.capacidade = capacidade;
         this.ingressos = new ArrayList<>();
+        this.cancelado = false;
     }
 
      public String getCodigoEvento() {
@@ -66,6 +68,10 @@ public class Evento {
         return (getIngressosVendidos() * 100.0) / capacidade;
     }
 
+    public boolean isCancelado() {
+        return cancelado;
+    }
+
     @Override
     public String toString() {
         return "Evento {" +
@@ -77,7 +83,4 @@ public class Evento {
                 ", capacidade=" + capacidade +
                 ", vendidos=" + getIngressosVendidos() + "}";
     }
-
-    
-
 }

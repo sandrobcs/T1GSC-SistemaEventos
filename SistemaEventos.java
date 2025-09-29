@@ -20,7 +20,6 @@ public class SistemaEventos {
         }
     }
 
-    // Pessoa 6 – Buscar Evento por Nome
     public ArrayList<Evento> buscarEventoPorNome(String nomeParcial) {
         ArrayList<Evento> resultado = new ArrayList<>();
         for (Evento e : eventos) {
@@ -29,5 +28,18 @@ public class SistemaEventos {
             }
         }
         return resultado;
+    }
+
+    public Ingresso emitirIngresso(String codigoEvento, String tipo, Participante p) {
+        for (Evento e : eventos) {
+            if (e.getCodigoEvento().equals(codigoEvento) && !e.isCancelado()) {
+                String codigoIngresso = codigoEvento + "-" + String.format("%03d", e.getIngressos().size() + 1);
+                if (tipo.equalsIgnoreCase("Especial")) codigoIngresso += "E";
+                Ingresso i = new Ingresso(codigoIngresso, tipo, p);
+                e.adicionarIngresso(i);
+                return i;
+            }
+        }
+        return null;
     }
 }
