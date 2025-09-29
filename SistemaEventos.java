@@ -11,5 +11,23 @@ public class SistemaEventos {
         Evento e = new Evento(nome, data, valor, responsavel, capacidade);
         eventos.add(e);
         return e;
+
+    }
+
+    public void listarEventos() {
+        for (Evento e : eventos) {
+            System.out.println(e);
+        }
+    }
+
+    // Pessoa 6 – Buscar Evento por Nome
+    public ArrayList<Evento> buscarEventoPorNome(String nomeParcial) {
+        ArrayList<Evento> resultado = new ArrayList<>();
+        for (Evento e : eventos) {
+            if (e.getNome().toLowerCase().contains(nomeParcial.toLowerCase())) {
+                resultado.add(e);
+            }
+        }
+        return resultado;
     }
 }
