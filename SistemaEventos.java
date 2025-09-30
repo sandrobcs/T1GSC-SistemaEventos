@@ -42,4 +42,16 @@ public class SistemaEventos {
         }
         return null;
     }
+
+     public boolean registrarPresenca(String codigoEvento, String codigoIngresso) {
+        for (Evento e : eventos) {
+            for (Ingresso i : e.getIngressos()) {
+                if (i.getCodigoIngresso().equals(codigoIngresso)) {
+                    System.out.println("Presença confirmada: " + i.getParticipante());
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
