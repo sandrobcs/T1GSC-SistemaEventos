@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Evento {
@@ -5,14 +6,14 @@ public class Evento {
 
     private String codigoEvento;
     private String nome;
-    private String data; 
+    private LocalDate data; 
     private double valorIngresso;
     private String responsavel;
     private int capacidade;
     private ArrayList<Ingresso> ingressos;
     private boolean cancelado;
 
-    public Evento(String nome, String data, double valor, String responsavel, int capacidade) {
+    public Evento(String nome, LocalDate data, double valor, String responsavel, int capacidade) {
         contadorEventos++;
         this.codigoEvento = String.format("%03d", contadorEventos); 
         this.nome = nome;
@@ -32,7 +33,7 @@ public class Evento {
         return nome;
     }
 
-    public String getData() {
+    public LocalDate getData() {
         return data;
     }
 
