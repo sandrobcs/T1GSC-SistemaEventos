@@ -38,4 +38,14 @@ public class SistemaEventos {
             }
         }
     }
+    
+    public void cancelarEvento(String codigoEvento) {
+        for (Evento e : eventos) {
+            if (e.getCodigoEvento().equals(codigoEvento)) {
+                e.cancelar();
+                System.out.println("Evento " + e.getNome() + " cancelado!");
+            }
+    
+        }
+    }
 }
