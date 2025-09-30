@@ -1,8 +1,7 @@
+import java.time.LocalDate;
 import java.util.Scanner;
 
-
 public class Main {
-    
 
     public static void Menu(){
         int opcao = 1;
@@ -56,12 +55,6 @@ public class Main {
         }
     }
 
-
-
-
-
-
-
     public static void main(String[] args) {
         SistemaEventos sistema = new SistemaEventos();
 
@@ -73,8 +66,8 @@ public class Main {
         Participante p5 = new Participante("Guedes", "10293847560");
 
         // Cadastrar eventos
-        Evento e1 = sistema.cadastrarEvento("Fórum da Liberdade", "21/07/25", 150.0, "PUCRS", 100);
-        Evento e2 = sistema.cadastrarEvento("Festival Borges", "20/11/25", 50.0, "Gabriel Borges", 20);
+        Evento e1 = sistema.cadastrarEvento("Fórum da Liberdade", LocalDate.of(2025,07,21), 150.0, "PUCRS", 100);
+        Evento e2 = sistema.cadastrarEvento("Festival Borges", LocalDate.of(2025, 11, 20), 50.0, "Gabriel Borges", 20);
 
         // Criar ingressos
         Ingresso i1 = sistema.emitirIngresso(e1.getCodigoEvento(), "Normal", p1);
@@ -83,10 +76,5 @@ public class Main {
         Ingresso i4 = sistema.emitirIngresso(e2.getCodigoEvento(), "Normal", p4);
         Ingresso i5 = sistema.emitirIngresso(e2.getCodigoEvento(), "Especial", p5);
 
-
-
     }
-
-
-    
 }

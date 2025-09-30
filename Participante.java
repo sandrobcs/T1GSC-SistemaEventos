@@ -14,5 +14,4 @@ public class Participante {
     public String getCpf() {
         return cpf;
     }
-
 }

@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SistemaEventos {
@@ -7,7 +8,11 @@ public class SistemaEventos {
         eventos = new ArrayList<>();
     }
 
-    public Evento cadastrarEvento(String nome, String data, double valor, String responsavel, int capacidade) {
+    public Evento cadastrarEvento(String nome, LocalDate data, double valor, String responsavel, int capacidade) {
+        if (data.isBefore(LocalDate.now().plusDays(1))) {
+            System.out.println("Data inválida! O evento deve ser no futuro.");
+            return null;
+        }
         Evento e = new Evento(nome, data, valor, responsavel, capacidade);
         eventos.add(e);
         return e;
