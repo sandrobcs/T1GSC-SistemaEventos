@@ -20,7 +20,6 @@ public class SistemaEventos {
         }
     }
 
-    // Pessoa 6 – Buscar Evento por Nome
     public ArrayList<Evento> buscarEventoPorNome(String nomeParcial) {
         ArrayList<Evento> resultado = new ArrayList<>();
         for (Evento e : eventos) {
@@ -29,5 +28,14 @@ public class SistemaEventos {
             }
         }
         return resultado;
+    }
+
+    public void gerarRelatorioMensal(int mes, int ano) {
+        System.out.println("Relatório de eventos " + mes + "/" + ano);
+        for (Evento e : eventos) {
+            if (!e.isCancelado()) {
+                System.out.println(e);
+            }
+        }
     }
 }
