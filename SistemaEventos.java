@@ -30,6 +30,25 @@ public class SistemaEventos {
         return resultado;
     }
 
+    public void gerarRelatorioMensal(int mes, int ano) {
+        System.out.println("Relatório de eventos " + mes + "/" + ano);
+        for (Evento e : eventos) {
+            if (!e.isCancelado()) {
+                System.out.println(e);
+            }
+        }
+    }
+    
+    public void cancelarEvento(String codigoEvento) {
+        for (Evento e : eventos) {
+            if (e.getCodigoEvento().equals(codigoEvento)) {
+                e.cancelar();
+                System.out.println("Evento " + e.getNome() + " cancelado!");
+            }
+    
+        }
+    }
+
     public Ingresso emitirIngresso(String codigoEvento, String tipo, Participante p) {
         for (Evento e : eventos) {
             if (e.getCodigoEvento().equals(codigoEvento) && !e.isCancelado()) {
@@ -65,4 +84,5 @@ public class SistemaEventos {
             }
         }
     }
+
 }

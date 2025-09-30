@@ -68,6 +68,10 @@ public class Evento {
         return (getIngressosVendidos() * 100.0) / capacidade;
     }
 
+    public void cancelar() { 
+        this.cancelado = true;
+    }
+      
     public boolean isCancelado() {
         return cancelado;
     }
