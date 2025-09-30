@@ -13,6 +13,15 @@ public class Main {
         // Cadastrar eventos
         Evento e1 = sistema.cadastrarEvento("Fórum da Liberdade", "21/07/25", 150.0, "PUCRS", 100);
         Evento e2 = sistema.cadastrarEvento("Festival Borges", "20/11/25", 50.0, "Gabriel Borges", 20);
+
+        // Criar ingressos
+        Ingresso i1 = sistema.emitirIngresso(e1.getCodigoEvento(), "Normal", p1);
+        Ingresso i2 = sistema.emitirIngresso(e1.getCodigoEvento(), "Normal", p2);
+        Ingresso i3 = sistema.emitirIngresso(e1.getCodigoEvento(), "Especial", p3);
+        Ingresso i4 = sistema.emitirIngresso(e2.getCodigoEvento(), "Normal", p4);
+        Ingresso i5 = sistema.emitirIngresso(e2.getCodigoEvento(), "Especial", p5);
+
         
+
     }
 }
