@@ -48,4 +48,41 @@ public class SistemaEventos {
     
         }
     }
+
+    public Ingresso emitirIngresso(String codigoEvento, String tipo, Participante p) {
+        for (Evento e : eventos) {
+            if (e.getCodigoEvento().equals(codigoEvento) && !e.isCancelado()) {
+                String codigoIngresso = codigoEvento + "-" + String.format("%03d", e.getIngressos().size() + 1);
+                if (tipo.equalsIgnoreCase("Especial")) codigoIngresso += "E";
+                Ingresso i = new Ingresso(codigoIngresso, tipo, p);
+                e.adicionarIngresso(i);
+                return i;
+            }
+        }
+        return null;
+    }
+
+     public boolean registrarPresenca(String codigoEvento, String codigoIngresso) {
+        for (Evento e : eventos) {
+            for (Ingresso i : e.getIngressos()) {
+                if (i.getCodigoIngresso().equals(codigoIngresso)) {
+                    System.out.println("Presença confirmada: " + i.getParticipante());
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void consultarDetalhesEvento(String codigoEvento) {
+        for (Evento e : eventos) {
+            if (e.getCodigoEvento().equals(codigoEvento)) {
+                System.out.println("Detalhes do evento " + e.getNome());
+                System.out.println("Capacidade: " + e.getCapacidade());
+                System.out.println("Ingressos vendidos: " + e.getIngressosVendidos());
+                System.out.println("Ocupação: " + e.getPercentualOcupacao() + "%");
+            }
+        }
+    }
+
 }
