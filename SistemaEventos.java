@@ -54,4 +54,15 @@ public class SistemaEventos {
         }
         return false;
     }
+
+    public void consultarDetalhesEvento(String codigoEvento) {
+        for (Evento e : eventos) {
+            if (e.getCodigoEvento().equals(codigoEvento)) {
+                System.out.println("Detalhes do evento " + e.getNome());
+                System.out.println("Capacidade: " + e.getCapacidade());
+                System.out.println("Ingressos vendidos: " + e.getIngressosVendidos());
+                System.out.println("Ocupação: " + e.getPercentualOcupacao() + "%");
+            }
+        }
+    }
 }
