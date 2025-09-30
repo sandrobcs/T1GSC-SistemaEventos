@@ -82,7 +82,6 @@ public class SistemaEventos {
                 System.out.println("Ingressos vendidos: " + e.getIngressosVendidos());
                 System.out.println("Ocupação: " + e.getPercentualOcupacao() + "%");
             }
-        }
-    }
-
+        }
+    }
 }
