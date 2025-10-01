@@ -62,10 +62,12 @@ public class Main {
                 System.out.println("Evento cadastrado com sucesso!");
                 break;
             case 2:
-                // Código para listar eventos
+                sistema.listarEventos();
                 break;
             case 3:
-                // Código para buscar evento por nome
+                System.out.print("Digite o nome do evento para buscar: ");
+                String nomeBusca = scanner.nextLine();
+                sistema.buscarEventoPorNome(nomeBusca);
                 break;
             case 4:
                 // Código para gerar relatório mensal
