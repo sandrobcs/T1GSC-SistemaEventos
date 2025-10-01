@@ -118,6 +118,7 @@ public class SistemaEventos {
                         " (" + String.format("%.1f", e.getPercentualEspeciais()) + "%)");
                 System.out.println("Total vendidos: " + e.getIngressosVendidos());
                 System.out.println("Ocupação total: " + String.format("%.1f", e.getPercentualOcupacao()) + "%");
+
                 System.out.println("Participantes presentes:");
                 for (Ingresso i : e.getIngressos()) {
                     if (i.isPresente()) System.out.println(i.getParticipante().getNomeCompleto() + " (" + i.getCodigoIngresso() + ")");
