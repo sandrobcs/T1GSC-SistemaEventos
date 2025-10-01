@@ -16,7 +16,7 @@ public class Main {
         Participante p5 = new Participante("Guedes", "10293847560");
 
         // Cadastrar eventos
-        Evento e1 = sistema.cadastrarEvento("Fórum da Liberdade", LocalDate.of(2025,07,21), 150.0, "PUCRS", 100);
+        Evento e1 = sistema.cadastrarEvento("Fórum da Liberdade", LocalDate.of(2025,12,21), 150.0, "PUCRS", 100);
         Evento e2 = sistema.cadastrarEvento("Festival Borges", LocalDate.of(2025, 11, 20), 50.0, "Gabriel Borges", 20);
 
         // Criar ingressos
@@ -61,35 +61,84 @@ public class Main {
                 sistema.cadastrarEvento(nome, data, preco, organizador, capacidade);
                 System.out.println("Evento cadastrado com sucesso!");
                 break;
+
             case 2:
                 sistema.listarEventos();
                 break;
+
             case 3:
                 System.out.print("Digite o nome do evento para buscar: ");
                 String nomeBusca = scanner.nextLine();
                 sistema.buscarEventoPorNome(nomeBusca);
                 break;
+
             case 4:
-                // Código para gerar relatório mensal
+                System.out.print("Digite o mês (1-12): ");
+                int mes = scanner.nextInt();
+                System.out.print("Digite o ano (ex: 2025): ");
+                int ano = scanner.nextInt();
+                scanner.nextLine();
+                sistema.gerarRelatorioMensal(mes, ano);
                 break;
+
             case 5:
-                // Código para cancelar evento
+                System.out.print("Digite o código do evento para cancelar: ");
+                String codigoCancelar = scanner.next();
+                scanner.nextLine();
+                sistema.cancelarEvento(codigoCancelar);
                 break;
+
             case 6:
-                // Código para emitir ingresso
+                System.out.print("Digite o código do evento: ");
+                String codigoEvento = scanner.next();
+                scanner.nextLine();
+                System.out.print("Tipo de ingresso (Normal/Especial): ");
+                String tipoIngresso = scanner.nextLine();
+                System.out.print("Nome do participante: ");
+                String nomeParticipante = scanner.nextLine();
+                System.out.print("CPF do participante: ");
+                String cpfParticipante = scanner.nextLine();
+                Participante participante = new Participante(nomeParticipante, cpfParticipante);
+                Ingresso ingresso = sistema.emitirIngresso(codigoEvento, tipoIngresso, participante);
+                if (ingresso != null) {
+                    System.out.println("Ingresso emitido com sucesso! Código: " + ingresso.getCodigoIngresso());
+                } else {
+                    System.out.println("Não foi possível emitir o ingresso. Verifique os dados.");
+                }
                 break;
+
             case 7:
-                // Código para registrar presença
+                System.out.print("Digite o código do evento: ");
+                String eventoPresenca = scanner.next();
+                scanner.nextLine();
+
+                System.out.print("Digite o código do ingresso: ");
+                String codigoIngresso = scanner.next();
+                scanner.nextLine();
+
+                boolean registrado = sistema.registrarPresenca(eventoPresenca, codigoIngresso);
+                if (registrado) {
+                    System.out.println("Presença registrada com sucesso!");
+                } else {
+                    System.out.println("Ingresso não encontrado ou presença já registrada.");
+                }
                 break;
+
             case 8:
-                // Código para consultar detalhe de evento
+                System.out.print("Digite o código do evento: ");
+                String codigoDetalhe = scanner.next();
+                scanner.nextLine();
+                sistema.consultarDetalhesEvento(codigoDetalhe);
                 break;
+
             case 0:
                 System.out.println("Saindo...");
                 break;
+                
             default:
                 System.out.println("Opção inválida! Tente novamente.");
             }
+
         } while (opcao != 0);
     }
 
