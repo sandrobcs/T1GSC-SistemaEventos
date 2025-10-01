@@ -87,12 +87,20 @@ public class SistemaEventos {
         return null;
     }
 
-     public boolean registrarPresenca(String codigoEvento, String codigoIngresso) {
+    public boolean registrarPresenca(String codigoEvento, String codigoIngresso) {
         for (Evento e : eventos) {
-            for (Ingresso i : e.getIngressos()) {
-                if (i.getCodigoIngresso().equals(codigoIngresso)) {
-                    System.out.println("Presença confirmada: " + i.getParticipante());
-                    return true;
+            if (e.getCodigoEvento().equals(codigoEvento)) {
+                for (Ingresso i : e.getIngressos()) {
+                    if (i.getCodigoIngresso().equals(codigoIngresso)) {
+                        if (!i.isPresente()) {
+                            i.registrarPresenca();
+                            System.out.println("Presença confirmada: " + i.getParticipante());
+                            return true;
+                        } else {
+                            System.out.println("Presença já registrada!");
+                            return false;
+                        }
+                    }
                 }
             }
         }
@@ -104,8 +112,20 @@ public class SistemaEventos {
             if (e.getCodigoEvento().equals(codigoEvento)) {
                 System.out.println("Detalhes do evento " + e.getNome());
                 System.out.println("Capacidade: " + e.getCapacidade());
-                System.out.println("Ingressos vendidos: " + e.getIngressosVendidos());
-                System.out.println("Ocupação: " + e.getPercentualOcupacao() + "%");
+                System.out.println("Ingressos normais: " + e.getEmitidosNormais() + "/" + e.getQtdNormais() +
+                        " (" + String.format("%.1f", e.getPercentualNormais()) + "%)");
+                System.out.println("Ingressos especiais: " + e.getEmitidosEspeciais() + "/" + e.getQtdEspeciais() +
+                        " (" + String.format("%.1f", e.getPercentualEspeciais()) + "%)");
+                System.out.println("Total vendidos: " + e.getIngressosVendidos());
+                System.out.println("Ocupação total: " + String.format("%.1f", e.getPercentualOcupacao()) + "%");
+                System.out.println("Participantes presentes:");
+                for (Ingresso i : e.getIngressos()) {
+                    if (i.isPresente()) System.out.println(i.getParticipante().getNomeCompleto() + " (" + i.getCodigoIngresso() + ")");
+                }
+                System.out.println("Participantes ausentes:");
+                for (Ingresso i : e.getIngressos()) {
+                    if (!i.isPresente()) System.out.println(i.getParticipante().getNomeCompleto() + " (" + i.getCodigoIngresso() + ")");
+                }
             }
         }
     }
