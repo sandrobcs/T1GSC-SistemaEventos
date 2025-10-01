@@ -30,6 +30,7 @@ public class SistemaEventos {
         for (Evento e : eventos) {
             if (e.getNome().toLowerCase().contains(nomeParcial.toLowerCase())) {
                 resultado.add(e);
+                System.out.println(e);
             }
         }
         return resultado;
@@ -38,8 +39,12 @@ public class SistemaEventos {
     public void gerarRelatorioMensal(int mes, int ano) {
         System.out.println("Relatório de eventos " + mes + "/" + ano);
         for (Evento e : eventos) {
-            if (!e.isCancelado()) {
+            if (!e.isCancelado() && e.getData().getMonthValue() == mes && e.getData().getYear() == ano) {
                 System.out.println(e);
+                System.out.printf("Ingressos: Normais %d/%d (%.1f%%), Especiais %d/%d (%.1f%%), Ocupação total: %.1f%%\n",
+                        e.getEmitidosNormais(), e.getQtdNormais(), e.getPercentualNormais(),
+                        e.getEmitidosEspeciais(), e.getQtdEspeciais(), e.getPercentualEspeciais(),
+                        e.getPercentualOcupacao());
             }
         }
     }
@@ -57,8 +62,23 @@ public class SistemaEventos {
     public Ingresso emitirIngresso(String codigoEvento, String tipo, Participante p) {
         for (Evento e : eventos) {
             if (e.getCodigoEvento().equals(codigoEvento) && !e.isCancelado()) {
-                String codigoIngresso = codigoEvento + "-" + String.format("%03d", e.getIngressos().size() + 1);
-                if (tipo.equalsIgnoreCase("Especial")) codigoIngresso += "E";
+                int seq;
+                String codigoIngresso = null;
+                if (tipo.equalsIgnoreCase("Normal")) {
+                    if (e.getEmitidosNormais() >= e.getQtdNormais()) {
+                        System.out.println("Todos os ingressos normais já foram vendidos!");
+                        return null;
+                    }
+                    seq = e.getEmitidosNormais() + 1;
+                    codigoIngresso = codigoEvento + "-" + String.format("%03d", seq);
+                } else {
+                    if (e.getEmitidosEspeciais() >= e.getQtdEspeciais()) {
+                        System.out.println("Todos os ingressos especiais já foram vendidos!");
+                        return null;
+                    }
+                    seq = e.getEmitidosEspeciais() + 1 + e.getQtdNormais();
+                    codigoIngresso = codigoEvento + "-" + String.format("%03d", seq) + "E";
+                }
                 Ingresso i = new Ingresso(codigoIngresso, tipo, p);
                 e.adicionarIngresso(i);
                 return i;
