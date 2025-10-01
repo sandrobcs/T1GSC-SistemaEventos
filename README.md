@@ -14,7 +14,7 @@ Essa prática evita o acúmulo de alterações extensas e de longa duração, o 
 | Participante                      | Usuário Github     |
 |:----------------------------------|:------------------|
 | Antonio Dal Bem                   | AntonioFDB         |
-| Arthur Dias da Silva              | arthudiasilva      |
+| Arthur Dias da Silva              | arthurdiasilva      |
 | Arthur de Oliveira Ferreira       | ArthurF28          |
 | Bruno Carboni                     | brun0c4r           |
 | Gabriel Michaelsen Borges         | borgesk1ngg        |
