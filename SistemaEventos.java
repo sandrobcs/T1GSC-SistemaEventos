@@ -121,11 +121,11 @@ public class SistemaEventos {
 
                 System.out.println("Participantes presentes:");
                 for (Ingresso i : e.getIngressos()) {
-                    if (i.isPresente()) System.out.println(i.getParticipante().getNomeCompleto() + " (" + i.getCodigoIngresso() + ")");
+                    if (i.isPresente()) System.out.println(i.getParticipante().toString());
                 }
                 System.out.println("Participantes ausentes:");
                 for (Ingresso i : e.getIngressos()) {
-                    if (!i.isPresente()) System.out.println(i.getParticipante().getNomeCompleto() + " (" + i.getCodigoIngresso() + ")");
+                    if (!i.isPresente()) System.out.println(i.getParticipante().toString());
                 }
             }
         }
@@ -136,7 +136,7 @@ public class SistemaEventos {
                 System.out.println("Lista de presença no evento " + e.getNome() + ":");
                 for (Ingresso i : e.getIngressos()) {
                     if (i.isPresente()) {
-                        System.out.println(i.getParticipante().getNomeCompleto() + ";" + i.getParticipante().getCpf());
+                        System.out.println(i.getParticipante().toString());
                     }
                 }
             }
@@ -150,7 +150,7 @@ public class SistemaEventos {
                 System.out.println("Lista de ausentes no evento " + e.getNome() + ":");
                 for (Ingresso i : e.getIngressos()) {
                     if (!i.isPresente()) {
-                        System.out.println(i.getParticipante().getNomeCompleto() + ";" + i.getParticipante().getCpf());
+                        System.out.println(i.getParticipante().toString());
                     }
                 }
             }

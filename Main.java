@@ -28,6 +28,7 @@ public class Main {
 
 
         do {
+        System.out.println("===== Menu =====");
         System.out.println("1 - Cadastrar Evento");
         System.out.println("2 - Listar Eventos");
         System.out.println("3 - Buscar Evento por Nome");
@@ -37,8 +38,9 @@ public class Main {
         System.out.println("7 - Registrar Presença");
         System.out.println("8 - Consultar detalhe de Evento");
         System.out.println("9 - Exportar lista de presença");      
-        System.out.println("10 - Listar ausentes");                   
+        System.out.println("10 - Exportar lista de ausentes");                   
         System.out.println("0 - Sair");
+        System.out.println("================");
 
         System.out.print("Escolha uma opção: ");
         opcao = scanner.nextInt();

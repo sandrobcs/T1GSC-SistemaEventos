@@ -111,16 +111,17 @@ public class Evento {
     }
 
     @Override
-    public String toString() {
-        return "Evento {" +
-                "codigo='" + codigoEvento + '\'' +
-                ", nome='" + nome + '\'' +
-                ", data='" + data + '\'' +
-                ", valor=" + valorIngresso +
-                ", responsavel='" + responsavel + '\'' +
-                ", capacidade=" + capacidade +
-                ", vendidos=" + getIngressosVendidos() + 
-                ", normais=" + emitidosNormais +
-                ", especiais=" + emitidosEspeciais + "}";
-    }
+public String toString() {
+    return "\n===== Evento =====" +
+            "\nCódigo: " + codigoEvento +
+            "\nNome: " + nome +
+            "\nData: " + data +
+            "\nValor do ingresso: R$ " + String.format("%.2f", valorIngresso) +
+            "\nResponsável: " + responsavel +
+            "\nCapacidade total: " + capacidade +
+            "\nIngressos normais vendidos: " + emitidosNormais + "/" + qtdNormais +
+            "\nIngressos especiais vendidos: " + emitidosEspeciais + "/" + qtdEspeciais +
+            "\nTotal de ingressos vendidos: " + getIngressosVendidos() +
+            "\n==================\n";
+}
 }
