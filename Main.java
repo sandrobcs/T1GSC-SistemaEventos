@@ -8,18 +8,18 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         SistemaEventos sistema = new SistemaEventos();
 
-        // Criar participantes
+        
         Participante p1 = new Participante("Antonio", "98765432101");
         Participante p2 = new Participante("Sandro", "12345678901");
         Participante p3 = new Participante("Lorenzo", "19283746500");
         Participante p4 = new Participante("Arthur", "56473829100");
         Participante p5 = new Participante("Guedes", "10293847560");
 
-        // Cadastrar eventos
+        
         Evento e1 = sistema.cadastrarEvento("Fórum da Liberdade", LocalDate.of(2025,12,21), 150.0, "PUCRS", 100);
         Evento e2 = sistema.cadastrarEvento("Festival Borges", LocalDate.of(2025, 11, 20), 50.0, "Gabriel Borges", 20);
 
-        // Criar ingressos
+        
         Ingresso i1 = sistema.emitirIngresso(e1.getCodigoEvento(), "Normal", p1);
         Ingresso i2 = sistema.emitirIngresso(e1.getCodigoEvento(), "Normal", p2);
         Ingresso i3 = sistema.emitirIngresso(e1.getCodigoEvento(), "Especial", p3);
@@ -36,6 +36,8 @@ public class Main {
         System.out.println("6 - Emitir Ingresso");
         System.out.println("7 - Registrar Presença");
         System.out.println("8 - Consultar detalhe de Evento");
+        System.out.println("9 - Exportar lista de presença");      
+        System.out.println("10 - Listar ausentes");                   
         System.out.println("0 - Sair");
 
         System.out.print("Escolha uma opção: ");
@@ -129,6 +131,20 @@ public class Main {
                 String codigoDetalhe = scanner.next();
                 scanner.nextLine();
                 sistema.consultarDetalhesEvento(codigoDetalhe);
+                break;
+
+            case 9:
+                System.out.print("Digite o código do evento: ");
+                String codPres = scanner.next();
+                scanner.nextLine();
+                sistema.exportarPresentes(codPres); 
+                break;
+
+            case 10:
+                System.out.print("Digite o código do evento: ");
+                String codAus = scanner.next();
+                scanner.nextLine();
+                sistema.listarAusentes(codAus); 
                 break;
 
             case 0:

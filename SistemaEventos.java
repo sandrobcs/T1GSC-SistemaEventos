@@ -130,4 +130,30 @@ public class SistemaEventos {
             }
         }
     }
+    public void exportarPresentes(String codigoEvento) { 
+        for (Evento e : eventos) {
+            if (e.getCodigoEvento().equals(codigoEvento)) {
+                System.out.println("Lista de presença no evento " + e.getNome() + ":");
+                for (Ingresso i : e.getIngressos()) {
+                    if (i.isPresente()) {
+                        System.out.println(i.getParticipante().getNomeCompleto() + ";" + i.getParticipante().getCpf());
+                    }
+                }
+            }
+        }
+    }
+
+    
+    public void listarAusentes(String codigoEvento) { 
+        for (Evento e : eventos) {
+            if (e.getCodigoEvento().equals(codigoEvento)) {
+                System.out.println("Lista de ausentes no evento " + e.getNome() + ":");
+                for (Ingresso i : e.getIngressos()) {
+                    if (!i.isPresente()) {
+                        System.out.println(i.getParticipante().getNomeCompleto() + ";" + i.getParticipante().getCpf());
+                    }
+                }
+            }
+        }
+    }
 }

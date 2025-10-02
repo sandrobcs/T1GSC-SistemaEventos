@@ -1,6 +1,6 @@
 public class Ingresso {
-    private String codigoIngresso;     // Ex: 121-001 ou 121-075E
-    private String tipo;               // "Normal" ou "Especial"
+    private String codigoIngresso;     
+    private String tipo;               
     private Participante participante; 
     private boolean presente;
 
