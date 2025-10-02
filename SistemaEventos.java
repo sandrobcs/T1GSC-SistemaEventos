@@ -39,7 +39,7 @@ public class SistemaEventos {
     public void gerarRelatorioMensal(int mes, int ano) {
         System.out.println("Relatório de eventos " + mes + "/" + ano);
         for (Evento e : eventos) {
-            if (!e.isCancelado() && e.getData().getMonthValue() == mes && e.getData().getYear() == ano) {
+            if (e.getData().getMonthValue() == mes && e.getData().getYear() == ano) {
                 System.out.println(e);
                 System.out.printf("Ingressos: Normais %d/%d (%.1f%%), Especiais %d/%d (%.1f%%), Ocupação total: %.1f%%\n",
                         e.getEmitidosNormais(), e.getQtdNormais(), e.getPercentualNormais(),
@@ -49,19 +49,19 @@ public class SistemaEventos {
         }
     }
     
-    public void cancelarEvento(String codigoEvento) {
-        for (Evento e : eventos) {
-            if (e.getCodigoEvento().equals(codigoEvento)) {
-                e.cancelar();
-                System.out.println("Evento " + e.getNome() + " cancelado!");
+    public void cancelarEvento(String codigoEvento) { 
+        for (int i = 0; i < eventos.size(); i++) { 
+            if (eventos.get(i).getCodigoEvento().equals(codigoEvento)) { 
+                System.out.println("Evento " + eventos.get(i).getNome() + " removido!"); 
+                eventos.remove(i); 
+                break; 
             }
-    
         }
     }
 
     public Ingresso emitirIngresso(String codigoEvento, String tipo, Participante p) {
         for (Evento e : eventos) {
-            if (e.getCodigoEvento().equals(codigoEvento) && !e.isCancelado()) {
+            if (e.getCodigoEvento().equals(codigoEvento)) {
                 int seq;
                 String codigoIngresso = null;
                 if (tipo.equalsIgnoreCase("Normal")) {

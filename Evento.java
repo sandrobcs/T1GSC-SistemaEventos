@@ -11,7 +11,6 @@ public class Evento {
     private String responsavel;
     private int capacidade;
     private ArrayList<Ingresso> ingressos;
-    private boolean cancelado;
     private int qtdNormais;            
     private int qtdEspeciais;         
     private int emitidosNormais;      
@@ -26,7 +25,6 @@ public class Evento {
         this.responsavel = responsavel;
         this.capacidade = capacidade;
         this.ingressos = new ArrayList<>();
-        this.cancelado = false;
         this.qtdEspeciais = (int)Math.ceil(capacidade * 0.15);  
         this.qtdNormais = capacidade - qtdEspeciais; 
         this.emitidosNormais = 0;                               
@@ -110,14 +108,6 @@ public class Evento {
 
     public double getPercentualOcupacao() {
         return (getIngressosVendidos() * 100.0) / capacidade;
-    }
-
-    public void cancelar() { 
-        this.cancelado = true;
-    }
-      
-    public boolean isCancelado() {
-        return cancelado;
     }
 
     @Override
