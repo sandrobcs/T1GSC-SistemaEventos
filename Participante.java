@@ -14,9 +14,4 @@ public class Participante {
     public String getCpf() {
         return cpf;
     }
-
-    @Override
-    public String toString() {
-    return "Participante: " + nomeCompleto + " (CPF: " + cpf + ")";
-}
 }

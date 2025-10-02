@@ -32,12 +32,13 @@ public class Ingresso {
     }
 
     @Override
-    public String toString() {
-        return "Ingresso {" +
-                "codigo='" + codigoIngresso + '\'' +
-                ", tipo='" + tipo + '\'' +
-                ", participante=" + (participante != null ? participante.getNomeCompleto() : "N/A") +
-                ", presente=" + presente +
-                '}';
-    }
+public String toString() {
+    return "\n--- Ingresso ---" +
+            "\nCódigo: " + codigoIngresso +
+            "\nTipo: " + tipo +
+            "\nParticipante: " + (participante != null ? participante.getNomeCompleto() : "N/A") +
+            "\nCPF: " + (participante != null ? participante.getCpf() : "N/A") +
+            "\nPresente: " + (presente ? "Sim" : "Não") +
+            "\n----------------\n";
+}
 }
