@@ -2,10 +2,11 @@
 
 ## Fluxo de Trabalho
 
-No projeto, foi adotado o fluxo de trabalho **Trunk-Based Development**, no qual todos os integrantes da equipe colaboram a partir de uma única branch principal, denominada `main`. Esse modelo prioriza a simplicidade e a integração contínua, reduzindo a complexidade no gerenciamento de branches e favorecendo a coordenação entre os membros do grupo.
+No projeto, foi adotado o fluxo de trabalho **GitHub Flow**, no qual todos os integrantes da equipe colaboram a partir de uma única branch principal, denominada main. Esse modelo valoriza a simplicidade e a colaboração contínua, facilitando o gerenciamento das contribuições e garantindo que a base do código se mantenha estável e funcional.
 
-A dinâmica consiste na criação de branches curtas e específicas para a implementação de funcionalidades ou correções, que, após concluídas, são rapidamente integradas de volta à branch principal.  
-Essa prática evita o acúmulo de alterações extensas e de longa duração, o que diminui o risco de conflitos de código e garante que o repositório permaneça em estado estável. Dessa maneira, a equipe consegue trabalhar de forma paralela e organizada, assegurando que a evolução do sistema ocorra de modo contínuo, colaborativo e alinhado às boas práticas de gerenciamento de configurações de software.
+A dinâmica consiste na criação de branches temporárias e específicas para o desenvolvimento de funcionalidades ou correções, que, após concluídas, são integradas de volta à branch principal por meio de Pull Requests.
+Essa prática permite revisões colaborativas, evita o acúmulo de alterações extensas e reduz os riscos de conflitos, mantendo o projeto em evolução constante. Dessa maneira, a equipe conseguiu trabalhar em paralelo de forma organizada, assegurando integração contínua, participação conjunta e alinhamento às boas práticas de versionamento.
+
 
 ---
 
